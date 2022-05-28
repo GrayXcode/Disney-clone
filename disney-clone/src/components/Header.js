@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { auth, provider } from "./firebase";
+import { signInWithPopup } from 'firebase/auth';
 
 function Header(props) {
   const handleAuth = () => {
-    auth.signInWithPopup(provider)
+    signInWithPopup(auth, provider)
       .then((res) => {
         console.log(res);
       }).catch(err => alert(err.message));
@@ -123,7 +124,7 @@ const NavMenu = styled.div`
       left: 0px;
       transform-origin: left;
       transform: scaleX(0);
-      transition: all 480ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+      transition: all 480ms cubic-bezier(0.15, 0.56, 0.45, 0.94) 0s;
       width: auto;
     }
   }
