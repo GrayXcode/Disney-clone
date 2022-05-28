@@ -3,11 +3,13 @@ import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Viewers from "./Viewers";
 
 function Home() {
   return (
     <Container>
-      <ImgSlider />
+          <ImgSlider />
+          <Viewers />
     </Container>
   );
 }
