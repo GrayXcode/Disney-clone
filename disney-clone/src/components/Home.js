@@ -26,39 +26,40 @@ function Home() {
   useEffect(() => {
     async function sortMovie() {
       const querySnapshot = await getDocs(collection(db, "movies"));
+
       querySnapshot.forEach((doc) => {
-        console.log('🉐', recommends);
-        console.log('🏂', trending);
+        console.log(recommends);
         switch (doc.data().type) {
           case "recommend":
-            recommends = [recommends, { id: doc.id, ...doc.data() }];
+            recommends = [...recommends, { id: doc.id, ...doc.data() }];
             break;
           case "new":
-            newDisney = [newDisney, { id: doc.id, ...doc.data() }];
+            newDisney = [...newDisney, { id: doc.id, ...doc.data() }];
             break;
           case "trending":
-            trending = [trending, { id: doc.id, ...doc.data() }];
+            trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
           case "original":
-            original = [original, { id: doc.id, ...doc.data() }];
+            original = [...original, { id: doc.id, ...doc.data() }];
             break;
 
           default:
             break;
-        }
+        };
+        
+        dispatch(
+          setMovies({
+            recommend: recommends,
+            newDisney: newDisney,
+            trending: trending,
+            original: original,
+          })
+        );
       });
     }
 
     sortMovie();
 
-    dispatch(
-      setMovies({
-        recommend: recommends,
-        newDisney: newDisney,
-        trending: trending,
-        original: original,
-      })
-    );
   }, [userName]);
 
   return (
