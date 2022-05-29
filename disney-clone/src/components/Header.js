@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { auth, provider } from "./firebase";
+import { auth, provider } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
